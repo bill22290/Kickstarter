@@ -190,8 +190,29 @@ rfk10 <- randomForest::rfcv(trainx, train.kick$state, cv.fold = 10)
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV10.PNG)
 ## Rpart Printcp()
-![](https://github.com/bill22290/Kickstarter/blob/master/images/RpartCP.PNG)
+```
+#Set xval = 5 in rpart.control() for number of folds to compare to the first random forest cross validation conducted which had cv.fold = 5
+> rpart::printcp(mytree)
 
+Classification tree:
+rpart(formula = kickstarter_time_test$state ~ kickstarter_time_test$main_category + 
+    kickstarter_time_test$currency + kickstarter_time_test$usd.pledged + 
+    kickstarter_time_test$date_diff, data = kickstarter_time_test, 
+    method = "class", parms = list(split = "information"), minsplit = 2, 
+    minbucket = 1)
 
+Variables actually used in tree construction:
+[1] kickstarter_time_test$date_diff     kickstarter_time_test$main_category kickstarter_time_test$usd.pledged  
+
+Root node error: 113081/281302 = 0.40199
+
+n= 281302 
+
+        CP nsplit rel error  xerror      xstd
+1 0.073054      0   1.00000 1.00000 0.0022996
+2 0.012314      2   0.85389 0.85203 0.0022258
+3 0.010000      4   0.82926 0.82864 0.0022106
+```
+When running the printcp() function on rpart classification trees, the cross-validated error rate equals the Root node error * the xerror rate which in this case is (.40199) * (.82864) = approx. 33%. 
 
 
