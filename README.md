@@ -10,8 +10,10 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 
 -Feature Variables to be examined include: fundraising campaign category, currency, deadline date, fundraising goal, launch date, amount pledged and number of backers
 
+### Exploratory Data Analysis
+
 ```markdown
-Syntax highlighted code block
+
 
 # Header 1
 ## Header 2
