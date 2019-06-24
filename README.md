@@ -102,6 +102,7 @@ The original dataset on Kaggle only had columns for a project launch date and de
 ### Random Forest Model
 I am now ready to build my Random Forest model.  I have created a new data frame only including the variables that I want to include for the model:
 ```
+#Note that I have normalized the usd.pledged variable as well as the date_diff variable as those two are numeric
 > str(kickstarter_time_test)
 'data.frame':	281302 obs. of  5 variables:
  $ main_category: Factor w/ 15 levels "Art","Comics",..: 13 7 11 8 8 8 13 11 3 9 ...
@@ -143,3 +144,34 @@ I want to compare the Random Forest model that I just built, model1, to a decisi
 > rpart.plot(mytree)
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Rpart_mytree.png)
+
+## Comparing Models
+The first split in a decision tree will be the most important feature. The VarImPlot() for the Random Forest model and the rpart.plot() for the decision tree model both indicate that the most important variable for predicting Kickstarter project success or failure is the amount of U.S. pledged.  
+
+## Confusion Matrix
+```
+> library(caret)
+#I am interested in the Precision and Recall statistics in order to compare model accuracy, so mode = "prec_recall"
+> caret::confusionMatrix(model1$predicted, model1$y, mode = "prec_recall")
+#To create a confusion Matrix for my decision tree I need to create a prediction table using my decision tree model to compare the model's accuracy with respect to the actual project state classifications (success or failure).
+> P <- predict(mytree, type = "class")
+> table(P)
+P
+    failed successful 
+    214717      66585 
+#Remember to set the y variable in the decision tree model to a factor for confusionMatrix
+> mytree$y <- as.factor(mytree$y)
+#Defining levels for the y variable in the mytree model
+> levels(mytree$y) <- c('failed', 'successful')
+> table(mytree$y)
+
+    failed successful 
+    168221     113081 
+>> caret::confusionMatrix(P, mytree$y, mode = "prec_recall")
+```
+![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_RPart.PNG)
+
+
+
+
+
