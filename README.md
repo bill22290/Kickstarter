@@ -178,11 +178,11 @@ The Rpart model has a better Recall score, however the Random Forest model has b
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV5_Plot.png)
 
-I expected a linear relationship between the C.V. error rate and the number of variables. I thought it was strange that this first RFCV plot has a C.V. error rate of approx. 31% with one variable, spiked to .32% for two variables and then had the lowest error rate of approx. 30% for 4 variables. 
+I expected a linear relationship between the C.V. error rate and the number of variables. I thought it was strange that this first RFCV plot has a C.V. error rate of approx. 31% with one variable, spiked to 32% for two variables and then had the lowest error rate of approx. 30% for 4 variables. 
 
 The rfcv help page in R offers an example to replicate the cross validation process to get a larger sample:
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV5_Replicate.PNG)
-
+After replicating the rfcv() function five times and then plotting the results we can see a more clear pattern that as the number of variables increase, the C.V. error rate decreases. Perhaps the reason there is a spike in the error rate for two variables was a result of the most important predictive variable, USD pledged, being the sole variable when n.var = 1 and thus having a disproportonate impact on the C.V. error rate when n.var = 1.
 
 
 
