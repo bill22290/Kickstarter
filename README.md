@@ -100,5 +100,36 @@ The original dataset on Kaggle only had columns for a project launch date and de
 ```
 
 ### Random Forest Model
+I am now ready to build my Random Forest model.  I have created a new data frame only including the variables that I want to include for the model:
+```
+> str(kickstarter_time_test)
+'data.frame':	281302 obs. of  5 variables:
+ $ main_category: Factor w/ 15 levels "Art","Comics",..: 13 7 11 8 8 8 13 11 3 9 ...
+ $ currency     : Factor w/ 13 levels "AUD","CAD","CHF",..: 6 13 13 13 13 13 2 13 13 13 ...
+ $ state        : Factor w/ 2 levels "failed","successful": 1 1 1 2 2 1 1 2 1 1 ...
+ $ usd.pledged  : num  -1.318 -0.159 -1.299 0.999 -0.987 ...
+ $ date_diff    : num  1.9246 0.838 -0.3261 0.0619 -1.1023 ...
+```
+Next I will organize the dataframe into a training (70% of the data) and valid data group (30% of the data):
+```
+>train <- sample(nrow(kickstarter_time_test), 0.7*nrow(kickstarter_time_test), replace = FALSE)
+>train.kick <- kickstarter_time_test[train,]
+valid.kick <- kickstarter_time_test[-train,]
+#Once the data has been partitioned, I can now set up my model:
+model1 <- randomForest(train.kick$state ~., data = train.kick, ntree = 500, mtry = 3, importance = TRUE)
+> model1
+
+Call:
+ randomForest(formula = train.kick$state ~ ., data = train.kick,      ntree = 500, mtry = 3, importance = TRUE) 
+               Type of random forest: classification
+                     Number of trees: 500
+No. of variables tried at each split: 3
+
+        OOB estimate of  error rate: 27.66%
+Confusion matrix:
+           failed successful class.error
+failed      93675      23855   0.2029695
+successful  30619      48762   0.3857220
+```
 
 
