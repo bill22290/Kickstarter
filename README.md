@@ -1,6 +1,6 @@
 ## Predicting Kickstarter Success
 
-For this project I will be analyzing a Kickstarter dataset in an attempt to identify if any feature variable attributes in the dataframe are predictive of Kickstarter project success or failure.  I will be working with Machine Learning algorithms in R, specifically a random forest and a decision tree model, throughout the course of the exercise. 
+For this project I will be analyzing a Kickstarter dataset in an attempt to identify if any feature variable attributes in the dataframe are predictive of Kickstarter project success or failure.  I will be working with Machine Learning algorithms in R, specifically a random forest classification model and a decision tree model, throughout the course of the exercise. 
 
 The dataset to  be used for this project was originally posted on Kaggle retrieved from: https://www.kaggle.com/kemical/kickstarter-projects
 
@@ -47,7 +47,7 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 As we can see from the Data Visualization pieces produced above, the distribution for the number of backers per fund raising project as well as the distribution for U.S. Dollars pledged are skewed to the left. 
 
 ### Data Cleaning
-I am only interested in Kickstarter projects that were either cataloged as successes or failures, I am not interested in projects that had incomplete data entry.  Notice when running the str() function on on the dataset, the state variable was inputted as a factor with 410 levels. If we use the summary() function and only look at the state variable, it appears that entries with a state variable other than "failed" or "successful" were inputted at different factor levels.  
+I am only interested in Kickstarter projects that were either cataloged as successes or failures, I am not interested in projects that had incomplete project state data entry.  Notice when running the str() function on the dataset, the state variable was inputted as a factor with 410 levels. If we use the summary() function and only look at the state variable, it appears that entries with a state variable other than "failed" or "successful" were inputted at different factor levels.  
 ```
 > summary(kickstarter)
 state         
@@ -58,4 +58,12 @@ live       :  4428
 undefined  :  3555
 suspended  :  1479
 (other)    :   632
+```
+I need to filter out entries that have irrelevant State variable entries (i.e. any State variable not equal to "failed" or "successful") . I also want to create another dataframe in my environment to begin parsing the data into a structure that will work for a random forest model and decision tree. For example, the X - X.3 columns in the original dataframe appear to be metadata that is unnecessary for the purose of my project, so I will begin dropping those columns as I start to maniplate the data into a new frame.
+```
+> kickstarter2 <- kickstarter[,-17]
+> kickstarter2 <- kickstarter2[,-2]
+str(kickstarter2)
+> str(kickstarter2)
+'data.frame':	323750 obs. of  15 variables:
 ```
