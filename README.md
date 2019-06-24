@@ -89,3 +89,16 @@ The dplyr library in R will be needed in order to filter variables:
 > str(kickstarter_test$state)
  Factor w/ 2 levels "failed","successful": 1 1 1 2 2 1 1 2 1 1 ...
  ```
+### Feature Engineering
+The original dataset on Kaggle only had columns for a project launch date and deadline date. I want to engineer a feature variable that will tell me how long each project was active:
+```
+> date_diff <- as.numeric(as.Date(as.character(kickstarter_test$deadline), format = "%m/%d/%Y")-as.Date(as.character(kickstarter_test$launched), format = "%m/%d/%Y"))
+> str(date_diff)
+ num [1:281302] 59 45 30 35 20 45 30 30 30 45 ...
+ #I now want to bind the newly created "date_diff" as a new feature variable to the dataframe that I am working with
+ >kickstarter_time <- cbind(kickstarter_test, date_diff)
+```
+
+### Random Forest Model
+
+
