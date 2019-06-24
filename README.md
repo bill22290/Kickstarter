@@ -1,4 +1,4 @@
-## Predicting Kickstarter Success
+## Predicting Kickstarter Project Success
 
 For this project I will be analyzing a Kickstarter dataset in an attempt to identify if any feature variable attributes in the dataframe are predictive of Kickstarter project success or failure.  I will be working with Machine Learning algorithms in R, specifically a random forest classification model and a decision tree model, throughout the course of the exercise. 
 
@@ -170,6 +170,10 @@ P
 >> caret::confusionMatrix(P, mytree$y, mode = "prec_recall")
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_RPart.PNG)
+The Rpart model has a better Recall score, however the Random Forest model has better accuracy, precision, F1 value and Kappa value.
+## Cross Validation
+![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_CV.PNG)
+
 
 
 
