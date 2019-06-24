@@ -10,12 +10,18 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 
 -Feature Variables to be examined include: fundraising campaign category, currency, deadline date, fundraising goal, launch date, amount pledged and number of backers
 
-### Exploratory Data Analysis
+## Exploratory Data Analysis
 ```
 > kickstarter <- read.csv("ks-projects.csv", header = TRUE)
 > boxplot(as.numeric(kickstarter$usd.pledged), main = "USD Pledged")
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/USDPledged_box.png)
+```
+> hist(as.numeric(kickstarter$usd.pledged))
+```
+![](https://github.com/bill22290/Kickstarter/blob/master/images/USDPledged_hist.png)
+
+
 
 
 ### Jekyll Themes
