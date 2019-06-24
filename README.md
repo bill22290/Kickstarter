@@ -14,16 +14,7 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 
 ```markdown
 
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
+> kickstarter <- read.csv("ks-projects.csv", header = TRUE)
 
 **Bold** and _Italic_ and `Code` text
 
