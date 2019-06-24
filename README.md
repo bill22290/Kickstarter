@@ -173,7 +173,15 @@ P
 The Rpart model has a better Recall score, however the Random Forest model has better accuracy, precision, F1 value and Kappa value.
 ## Cross Validation
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_CV.PNG)
+```
+> with(rfk, plot(rfk$n.var, rfk$error.cv, log = "x", type = "o", lwd=2))
+```
+![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV5_Plot.png)
 
+I expected a linear relationship between the C.V. error rate and the number of variables. I thought it was strange that this first RFCV plot has a C.V. error rate of approx. 31% with one variable, spiked to .32% for two variables and then had the lowest error rate of approx. 30% for 4 variables. 
+
+The rfcv help page in R offers an example to replicate the cross validation process to get a larger sample:
+![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV5_Replicate.PNG)
 
 
 
