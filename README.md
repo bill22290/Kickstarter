@@ -189,7 +189,8 @@ If we run the rfcv() function with cv.folds = 10 we can see a clear negative lin
 rfk10 <- randomForest::rfcv(trainx, train.kick$state, cv.fold = 10)
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV10.PNG)
-
+## Rpart Printcp()
+![](https://github.com/bill22290/Kickstarter/blob/master/images/RpartCP.PNG)
 
 
 
