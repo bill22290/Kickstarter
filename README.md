@@ -45,3 +45,16 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Backers_hist.png)
 
 As we can see from the Data Visualization pieces produced above, the distribution for the number of backers per fund raising project as well as the distribution for U.S. Dollars pledged are skewed to the left. 
+
+### Data Cleaning
+I am only interested in Kickstarter projects that were either cataloged as successes or failures, I am not interested in projects that had incomplete data entry.  Notice when running the str() function on on the dataset, the state variable was inputted as a factor with 410 levels.  
+```
+> summary(kickstarter)
+state         
+failed     :168221
+successful :113081
+canceled   : 32354
+live       :  4428
+undefined  :  3555
+suspended  :  1479
+(other)    :   632
