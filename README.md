@@ -47,7 +47,7 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 As we can see from the Data Visualization pieces produced above, the distribution for the number of backers per fund raising project as well as the distribution for U.S. Dollars pledged are skewed to the left. 
 
 ### Data Cleaning
-I am only interested in Kickstarter projects that were either cataloged as successes or failures, I am not interested in projects that had incomplete data entry.  Notice when running the str() function on on the dataset, the state variable was inputted as a factor with 410 levels.  
+I am only interested in Kickstarter projects that were either cataloged as successes or failures, I am not interested in projects that had incomplete data entry.  Notice when running the str() function on on the dataset, the state variable was inputted as a factor with 410 levels. If we use the summary() function and only look at the state variable, it appears that entries with a state variable other than "failed" or "successful" were inputted at different factor levels.  
 ```
 > summary(kickstarter)
 state         
