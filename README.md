@@ -25,4 +25,4 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Backers_hist.png)
 
-As we can see from the Data Visualization pieces produced above, the distribution for the number of backers per fund raising projects as well as the distribution for U.S. Dollars pledged are skewed to the left. 
+As we can see from the Data Visualization pieces produced above, the distribution for the number of backers per fund raising project as well as the distribution for U.S. Dollars pledged are skewed to the left. 
