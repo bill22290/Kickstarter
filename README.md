@@ -15,6 +15,8 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 ```markdown
 
 > kickstarter <- read.csv("ks-projects.csv", header = TRUE)
+> boxplot(as.numeric(kickstarter$usd.pledged), main = "USD Pledged")
+
 
 **Bold** and _Italic_ and `Code` text
 
