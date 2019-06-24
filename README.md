@@ -138,6 +138,7 @@ The Variable Importance plot shows us that the amount of U.S. dollars pledged is
 ### Decision Tree - Rpart
 I want to compare the Random Forest model that I just built, model1, to a decision tree built from the Rpart package in R using the same dataframe. 
 ```
+#Important to remember for this model to specify method = "class" since I am using classification for this project
 > mytree <- rpart(kickstarter_time_test$state ~ kickstarter_time_test$main_category+ kickstarter_time_test$currency + kickstarter_time_test$usd.pledged + kickstarter_time_test$date_diff, data = kickstarter_time_test, method = "class", parms = list(split = 'information'), minsplit = 2, minbucket = 1)
 > rpart.plot(mytree)
 ```
