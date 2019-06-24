@@ -182,7 +182,14 @@ I expected a linear relationship between the C.V. error rate and the number of v
 
 The rfcv help page in R offers an example to replicate the cross validation process to get a larger sample:
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV5_Replicate.PNG)
-After replicating the rfcv() function five times and then plotting the results we can see a more clear pattern that as the number of variables increase, the C.V. error rate decreases. Perhaps the reason there is a spike in the error rate for two variables was a result of the most important predictive variable, USD pledged, being the sole variable when n.var = 1 and thus having a disproportonate impact on the C.V. error rate when n.var = 1.
+After replicating the rfcv() function five times and then plotting the results we can see a more clear pattern that as the number of variables increase, the C.V. error rate decreases. Perhaps the reason for a spike in the error rate with two variables was a result of the most important predictive variable, USD pledged, being the sole variable when n.var = 1 and thus having a disproportonate impact on the C.V. error rate when n.var = 1.
+
+If we run the rfcv() function with cv.folds = 10 we can see a clear negative linear relationship between cv.error rate and number of variables:
+```
+rfk10 <- randomForest::rfcv(trainx, train.kick$state, cv.fold = 10)
+```
+1[](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV10.PNG)
+
 
 
 
