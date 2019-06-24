@@ -130,6 +130,7 @@ Confusion matrix:
            failed successful class.error
 failed      93675      23855   0.2029695
 successful  30619      48762   0.3857220
+> varImpPlot(model1)
 ```
-
+![](https://github.com/bill22290/Kickstarter/blob/master/images/Model1_Var_Imp.png)
 
