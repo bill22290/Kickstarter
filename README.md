@@ -17,7 +17,7 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 > kickstarter <- read.csv("ks-projects.csv", header = TRUE)
 > boxplot(as.numeric(kickstarter$usd.pledged), main = "USD Pledged")
 
-![](https://raw.githubusercontent.com/bill22290/Kickstarter/blob/master/USDPledged_box.png)
+![](https://github.com/bill22290/Kickstarter/blob/ff480b8ded0a258c7906b81d7b419df3d36153f3/USDPledged_box.png)
 
 ### Jekyll Themes
 
