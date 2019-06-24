@@ -1,7 +1,14 @@
 ## Predicting Kickstarter Success
-### Markdown
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+For this project I will be analyzing a Kickstarter dataset in an attempt to identify if any feature variable attributes in the dataframe are predictive of Kickstarter project success or failure.  I will be working with Machine Learning algorithms in R throughout the course of the exercise. 
+
+The dataset to  be used for this project was originally posted on Kaggle retrieved from: https://www.kaggle.com/kemical/kickstarter-projects
+
+### Overview
+
+-The original dataset has over 320,000 Kickstarter project entries from 2009-2016
+
+-Feature Variables to be examined include: fundraising campaign category, currency, deadline date, fundraising goal, launch date, amount pledged and number of backers
 
 ```markdown
 Syntax highlighted code block
