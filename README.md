@@ -213,6 +213,6 @@ n= 281302
 2 0.012314      2   0.85389 0.85203 0.0022258
 3 0.010000      4   0.82926 0.82864 0.0022106
 ```
-When running the printcp() function on rpart classification trees, the cross-validated error rate equals the Root node error * the xerror rate which in this case is (.40199) * (.82864) = approx. 33% when nsplit = 4 which is a higher error rate than the cv.error = 30% when n.var = 4. When running cross-validation, the rpart decision tree model "mytree" has a higher cross-validation error rate with four variables than the Random Forest Model "model1".
+When running the printcp() function on rpart classification trees, the cross-validated error rate equals the Root node error * the xerror rate which in this case is (.40199) * (.82864) = approx. 33% when nsplit = 4 which is a higher error rate than the cv.error = 30% when n.var = 4 in model1. When running cross-validation, the rpart decision tree model "mytree" has a higher cross-validation error rate with four variables than the Random Forest Model "model1".
 
 
