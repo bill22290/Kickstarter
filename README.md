@@ -135,7 +135,7 @@ successful  30619      48762   0.3857220
 > varImpPlot(model1)
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Model1_Var_Imp.png)
-The Variable Importance plot shows us that the amount of U.S. dollars pledged is the most important variable in the model. 
+The Variable Importance plot shows us that the amount of U.S. dollars pledged is by far the most important variable in the model for predicting the classification of a kickstarter project as either a success or failure. 
 
 ### Decision Tree - Rpart
 I want to compare the Random Forest model that I just built, model1, to a decision tree built from the Rpart package in R using the same dataframe. 
