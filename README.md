@@ -135,10 +135,10 @@ successful  30619      48762   0.3857220
 > varImpPlot(model1)
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Model1_Var_Imp.png)
-The Variable Importance plot shows us that the amount of U.S. dollars pledged is by far the most important variable in the model for predicting the classification of a kickstarter project as either a success or failure. 
+The Variable Importance plot shows us that the amount of U.S. dollars pledged is by far the most important variable in the model for predicting the classification of a Kickstarter project as either a success or failure. 
 
 ### Decision Tree - Rpart
-I want to compare the Random Forest model that I just built, model1, to a decision tree built from the Rpart package in R using the same dataframe. 
+I want to compare the Random Forest model that I just built, "model1", to a decision tree built from the Rpart package in R using the same dataframe. 
 ```
 #Important to remember for this model to specify method = "class" since I am using classification for this project
 > mytree <- rpart(kickstarter_time_test$state ~ kickstarter_time_test$main_category+ kickstarter_time_test$currency + kickstarter_time_test$usd.pledged + kickstarter_time_test$date_diff, data = kickstarter_time_test, method = "class", parms = list(split = 'information'), minsplit = 2, minbucket = 1)
@@ -146,7 +146,7 @@ I want to compare the Random Forest model that I just built, model1, to a decisi
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Rpart_mytree.png)
 
-Looking at the decision tree we can tell that the most important feature is the amount of USD pledged and the point of delineation is at -1.3 normalized USD pledged. The second most important feature is the fundraiser main category where projects with categories = Crafts, Design, Fashion, Food, Games, Journalism, Photography, Publishing and Technology had a better chance of being successful compared to the rest of the population.
+Looking at the decision tree we can tell that the most important feature is the amount of USD pledged and the point of delineation is at -1.3 normalized USD pledged. The second most important feature is the fundraiser main category where projects with categories = Crafts, Design, Fashion, Food, Games, Journalism, Photography, Publishing and Technology had a better chance of being successful compared to the rest of the sample.
 
 Since I normalized the USD pledged column, I want to back into a dollar figure that gives me an idea of what is the point of demarcation where fundraising projects below a certain threshold are much more likely to fail. 
 ```
@@ -237,7 +237,7 @@ I expected a linear relationship between the C.V. error rate and the number of v
 
 The rfcv help page in R offers an example to replicate the cross validation process to get a larger sample:
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RFCV5_Replicate.PNG)
-After replicating the rfcv() function five times and then plotting the results we can see a more clear pattern that as the number of variables increase, the C.V. error rate decreases. Perhaps the reason for a spike in the error rate with two variables was a result of the most important predictive variable, USD pledged, being the sole variable when n.var = 1 and thus having a disproportionate impact on the C.V. error rate when n.var = 1.
+After replicating the rfcv() function five times and then plotting the results, we can see a more clear pattern that as the number of variables increase, the C.V. error rate decreases. Perhaps the reason for a spike in the error rate with two variables was a result of the most important predictive variable, USD pledged, being the sole variable when n.var = 1 and thus having a disproportionate impact on the C.V. error rate when n.var = 1.
 
 If we run the rfcv() function with cv.folds = 10 we can see a clear negative linear relationship between cv.error rate and number of variables:
 ```
@@ -273,9 +273,9 @@ When running the printcp() function on rpart classification trees, the cross-val
 
 ## Conclusion
 
-The goal of this project was to try and determine any predictive relationship between a feature variable attribute in the Kickstarter dataset and the project state (success or failure) variable.  Looking at the model statistics, neither are exceptionally accurate. Many analysts look at a Kappa value of .40 as a minimum acceptable amount and only the random forest model, "model1", had a Kappa > .40. However, even if the accuracy numbers were a little underwhelming, the exercise still uncovered some useful information in regards to Kickstarter projects. 
+The goal of this project was to try and determine if there was any predictive relationship between a feature variable attribute in the Kickstarter dataset and the project state (success or failure) variable.  Looking at the model statistics, "model1" was more accurate than "mytree" however neither are exceptionally accurate. Many analysts look at a Kappa value of .40 as a minimum acceptable amount and only the random forest model, "model1", had a Kappa > .40. However, even if the accuracy numbers were a little underwhelming, the exercise still uncovered some useful information in regards to Kickstarter projects. 
 
 Both models confirmed that total USD pledged was the most important variable in terms of predicting kickstarter project success or failure. The decision tree model built in rpart indicated that projects at or lower than the 13.6 percentile for USD pledged, or approx. $457, are much more likely to fail. I also learned that kickstarter project category was the second most important variable in the rpart model for determining project success. 
 
-When I interpret the results of this analysis, I consider the objective of Kickstarter as an organization which is to help bring creative projects to life.  I approached this topic from the standpoint of trying to predict overall fundraising success or failure. If Kickstarter can accurately predict a project's success or failure based upon feature attributes, they would be in a much better position to increase the overall funding success rate.  Perhaps Kickstarter is already aware that projects below a few hundred dollars are much more likely to fail.  One of the great benefits that Fintech companies have is the ability to deploy economies of scale.  They can leverage their technology to provide best business practices to customers at higher volume with relatively lower marginal cost.  Kickstarter could preemptively target projects below a certain USD amount threshold ($457 in my model) and offer assistance for their customers in achieving the fundraising goal.
+When I interpret the results of this analysis, I consider the objective of Kickstarter as an organization, which is to help bring creative projects to life.  I approached this topic from the standpoint of trying to predict overall fundraising success or failure rate. If Kickstarter can accurately predict a project's success or failure based upon feature attributes, they would be in a much better position to increase the overall funding success rate which in turn helps acheive their goal.  Perhaps Kickstarter is already aware that projects below a few hundred dollars are much more likely to fail.  One of the great benefits that Fintech companies have is the ability to deploy economies of scale.  They can leverage their technology to provide best business practices to customers at higher volume with relatively lower marginal cost. Running through an exercise similar to the one I just conducted would cost litte to Kickstarter. Kickstarter could preemptively target projects below a certain USD amount threshold ($457 in my model) and immediately offer additional assistance that will help achieve the fundraising goal for those lower dollar projects. This type of approach would move the organization closer to achieving their stated goal.
 
