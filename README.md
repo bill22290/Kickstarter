@@ -102,7 +102,7 @@ The original dataset on Kaggle only had columns for a project launch date and de
 ### Random Forest Model
 I am now ready to build my Random Forest model.  I have created a new data frame only including the variables that I want to use for the model:
 ```
-#Note that I have normalized the usd.pledged variable as well as the date_diff variable as those two are numeric
+#Note that I have normalized the usd.pledged variable as well as the date_diff variable in order to make sure the numeric columns don't distort the results of the model
 > str(kickstarter_time_test)
 'data.frame':	281302 obs. of  5 variables:
  $ main_category: Factor w/ 15 levels "Art","Comics",..: 13 7 11 8 8 8 13 11 3 9 ...
@@ -145,6 +145,27 @@ I want to compare the Random Forest model that I just built, model1, to a decisi
 > rpart.plot(mytree)
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/Rpart_mytree.png)
+
+Looking at the decision tree we can tell that the most important feature is the amount of USD pledged and the point of delineation is at -1.3 normalized USD pledged. The second most important feature is the fundraiser main category where projects with categories = Crafts, Design, Fashion, Food, Games, Journalism, Photography, Publishing and Technology had a better chance of being successful compared to the rest of the population.
+
+Since I normalized the USD pledged column, I want to back into a dollar figure that gives me an idea of what is the point of demacation where fundraising projects below a certain threshold are much more likely to fail. 
+```
+>lowUSD <- filter(kickstarter_time_test, kickstarter_time_test$usd.pledged < -1.3)
+> str(lowUSD)
+'data.frame':	38357 obs. of  5 variables:
+ $ main_category: Factor w/ 15 levels "Art","Comics",..: 13 13 3 9 3 7 13 6 14 6 ...
+ $ currency     : Factor w/ 13 levels "AUD","CAD","CHF",..: 6 2 13 13 6 13 13 5 2 13 ...
+ $ state        : Factor w/ 2 levels "failed","successful": 1 1 1 1 1 1 1 1 1 1 ...
+ $ usd.pledged  : num  -1.32 -1.32 -1.32 -1.32 -1.32 ...
+ $ date_diff    : num  1.925 -0.326 -0.326 0.838 -0.326 ...
+ ```
+If I am narrowing in on the observations from the kickstarter_time_test dataframe which have USD pledged less than -1.3 on a normalized basis, that means I am focusing on the lower 13.6 percentile of the population (38,357 observations/281,302 observations).
+```
+>quantile(kickstarter_time$usd.pledged, c(.136))
+  13.6% 
+457.936
+```
+If I were working at Kickstarter and my goal was to increase the fundraising project success rate, I would be targeting projects right around and below the $457 threshold as those that are most likely to fail and are in need of fundraising assistance.
 
 ## Comparing Models
 The first split in a decision tree will be the most important feature. The VarImPlot() for the Random Forest model and the rpart.plot() for the decision tree model both indicate that the most important variable for predicting Kickstarter project success or failure is the amount of U.S. pledged.  
