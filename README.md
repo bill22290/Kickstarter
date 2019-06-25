@@ -148,7 +148,7 @@ I want to compare the Random Forest model that I just built, model1, to a decisi
 
 Looking at the decision tree we can tell that the most important feature is the amount of USD pledged and the point of delineation is at -1.3 normalized USD pledged. The second most important feature is the fundraiser main category where projects with categories = Crafts, Design, Fashion, Food, Games, Journalism, Photography, Publishing and Technology had a better chance of being successful compared to the rest of the population.
 
-Since I normalized the USD pledged column, I want to back into a dollar figure that gives me an idea of what is the point of demacation where fundraising projects below a certain threshold are much more likely to fail. 
+Since I normalized the USD pledged column, I want to back into a dollar figure that gives me an idea of what is the point of demarcation where fundraising projects below a certain threshold are much more likely to fail. 
 ```
 >lowUSD <- filter(kickstarter_time_test, kickstarter_time_test$usd.pledged < -1.3)
 > str(lowUSD)
