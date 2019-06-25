@@ -224,7 +224,7 @@ Prediction   failed successful
                                           
        'Positive' Class : failed   
 ```
-The Accuracy, Kappa, Precision, Recall and F1 figures are identical (only differing by decimals) when running the valid.kick data with "model1" compared to using the training.data set.  
+The Accuracy, Kappa, Precision, Recall and F1 figures are identical (only differing by decimals) when running the valid.kick data with "model1" compared to using the training.data set with "model1".  
 
 ## Cross Validation
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_CV.PNG)
