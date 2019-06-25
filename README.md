@@ -171,6 +171,39 @@ P
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_RPart.PNG)
 The Rpart model has a better Recall score, however the Random Forest model has better accuracy, precision, F1 value and Kappa value.
+
+If I check the accuracy of "model1" predictions against the valid.kick data I get similar statistics as when running "model1" with the train.kick data:
+```
+> testP <- predict(model1, valid.kick)
+> caret::confusionMatrix(testP, valid.kick$state, mode = "prec_recall")
+Confusion Matrix and Statistics
+
+            Reference
+Prediction   failed successful
+  failed      40196      12824
+  successful  10495      20876
+                                          
+               Accuracy : 0.7237          
+                 95% CI : (0.7206, 0.7267)
+    No Information Rate : 0.6007          
+    P-Value [Acc > NIR] : < 2.2e-16       
+                                          
+                  Kappa : 0.4173          
+                                          
+ Mcnemar's Test P-Value : < 2.2e-16       
+                                          
+              Precision : 0.7581          
+                 Recall : 0.7930          
+                     F1 : 0.7752          
+             Prevalence : 0.6007          
+         Detection Rate : 0.4763          
+   Detection Prevalence : 0.6283          
+      Balanced Accuracy : 0.7062          
+                                          
+       'Positive' Class : failed   
+```
+The Accuracy, Kappa, Precision, Recall and F1 figures are identical (only differing by decimals) when running the valid.kick data with "model1" compared to using the training.data set.  
+
 ## Cross Validation
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_CV.PNG)
 ```
