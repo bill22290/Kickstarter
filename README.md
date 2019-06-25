@@ -100,7 +100,7 @@ The original dataset on Kaggle only had columns for a project launch date and de
 ```
 
 ### Random Forest Model
-I am now ready to build my Random Forest model.  I have created a new data frame only including the variables that I want to include for the model:
+I am now ready to build my Random Forest model.  I have created a new data frame only including the variables that I want to use for the model:
 ```
 #Note that I have normalized the usd.pledged variable as well as the date_diff variable as those two are numeric
 > str(kickstarter_time_test)
