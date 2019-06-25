@@ -113,6 +113,7 @@ I am now ready to build my Random Forest model.  I have created a new data frame
 ```
 Next I will organize the dataframe into a training (70% of the data) and valid data group (30% of the data):
 ```
+>set.seed(123)
 >train <- sample(nrow(kickstarter_time_test), 0.7*nrow(kickstarter_time_test), replace = FALSE)
 >train.kick <- kickstarter_time_test[train,]
 valid.kick <- kickstarter_time_test[-train,]
