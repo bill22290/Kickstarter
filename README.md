@@ -8,7 +8,7 @@ The dataset to  be used for this project was originally posted on Kaggle retriev
 
 -The original dataset has over 320,000 Kickstarter project entries from 2009-2016
 
--Feature Variables to be examined include: fundraising campaign category, currency, deadline date, fundraising goal, launch date, amount pledged and number of backers
+-Feature Variables to be examined include: fundraising campaign category, currency, deadline date, launch date, amount pledged and number of backers
 
 ## Exploratory Data Analysis
 ```
