@@ -165,7 +165,7 @@ If I am narrowing in on the observations from the kickstarter_time_test datafram
   13.6% 
 457.936
 ```
-If I were working at Kickstarter and my goal was to increase the fundraising project success rate, I would be targeting projects right around and below the $457 threshold as those that are most likely to fail and are in need of fundraising assistance.
+If I was working at Kickstarter and wanted to increase the overall fundraising project success rate, I would be targeting projects right around and below the $457 USD pledged threshold as those projects are most likely to fail and are in need of fundraising assistance.
 
 ## Comparing Models
 The first split in a decision tree will be the most important feature. The VarImPlot() for the Random Forest model and the rpart.plot() for the decision tree model both indicate that the most important variable for predicting Kickstarter project success or failure is the amount of U.S. pledged.  
