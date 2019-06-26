@@ -192,7 +192,9 @@ P
 >> caret::confusionMatrix(P, mytree$y, mode = "prec_recall")
 ```
 ![](https://github.com/bill22290/Kickstarter/blob/master/images/RF_RPart.PNG)
-The Rpart model has a better Recall score, however the Random Forest model has better accuracy, precision, F1 value and Kappa value.
+The Rpart model has a better Recall score, however the Random Forest model has better accuracy, precision, F1 value and Kappa value. At first glance, the Random Forest model looks like the better of the two. However, it is important to rememeber the costs associated with False Positives and Negatives. Precision is the better statistic to consider when comparing models where the cost of a False Positive is high and Recall is the more pertinent figure to look at when the cost of False Negative is high.
+
+Notice that for my classification models, the Possitive class = failed which might be counterintuitive. If a project that is going to fail (Actual Positive) goes through the model and is predicted as a success (Predicted Negative) that is a worse outcome than a project which is going to succeed (Actual Negative) is predicted to fail (Predicted Positive).  Recall is the better metric to look at for my models because there is a higher cost associated with False Negatives.  Consider a false negative, where a project that is going to fail, is predicted to succeed. This project would not get the preemptive assistance that Kickstarter could offer for projects that are predicted to fail. 
 
 If I check the accuracy of "model1" predictions against the valid.kick data I get similar statistics as when running "model1" with the train.kick data:
 ```
@@ -269,7 +271,7 @@ When running the printcp() function on rpart classification trees, the cross-val
 
 ## Conclusion
 
-The goal of this project was to try and determine if there was any predictive relationship between a feature variable attribute in the Kickstarter dataset and the project state (success or failure) variable.  Looking at the model statistics, "model1" was more accurate than "mytree" however neither are exceptionally accurate. Many analysts look at a Kappa value of .40 as a minimum acceptable amount and only the random forest model, "model1", had a Kappa > .40. However, even if the accuracy numbers were a little underwhelming, the exercise still uncovered some useful information in regards to Kickstarter projects. 
+The goal of this project was to try and determine if there was any predictive relationship between a feature variable attribute in the Kickstarter dataset and the project state (success or failure) variable.  Looking at the model statistics, "model1" overall had more accurate metrics than "mytree", however based upon my particular problem, Recall actually is the most important statistic so "mytree" would be more useful in this analysis. That being said, neither are exceptionally accurate. Many analysts look at a Kappa value of .40 as a minimum acceptable amount and only the random forest model, "model1", had a Kappa > .40. However, even if the accuracy numbers were a little underwhelming, the exercise still uncovered some useful information in regards to Kickstarter projects. 
 
 Both models confirmed that total USD pledged was the most important variable in terms of predicting kickstarter project success or failure. The decision tree model built in rpart indicated that projects at or lower than the 13.6 percentile for USD pledged, or approx. $457, are much more likely to fail. I also learned that kickstarter project category was the second most important variable in the rpart model for determining project success. 
 
@@ -282,3 +284,4 @@ https://github.com/
 https://stackoverflow.com/
 https://www.rdocumentation.org/
 https://www.r-bloggers.com/how-to-implement-random-forests-in-r/
+https://towardsdatascience.com/accuracy-precision-recall-or-f1-331fb37c5cb9
