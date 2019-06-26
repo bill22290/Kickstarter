@@ -275,3 +275,10 @@ Both models confirmed that total USD pledged was the most important variable in 
 
 When I interpret the results of this analysis, I consider the objective of Kickstarter as an organization, which is to help bring creative projects to life.  I approached this topic from the standpoint of trying to predict overall fundraising success or failure rate. If Kickstarter can accurately predict a project's success or failure based upon feature attributes, they would be in a much better position to increase the overall funding success rate which in turn helps acheive their goal.  Perhaps Kickstarter is already aware that projects below a few hundred dollars are much more likely to fail.  One of the great benefits that Fintech companies have is the ability to deploy economies of scale.  They can leverage their technology to provide best business practices to customers at higher volume with relatively lower marginal cost. Running through an exercise similar to the one I just conducted would cost litte to Kickstarter. Kickstarter could preemptively target projects below a certain USD amount threshold ($457 in my model) and immediately offer additional assistance that will help achieve the fundraising goal for those lower dollar projects. This type of approach would move the organization closer to achieving their stated goal.
 
+## Sources
+
+https://towardsdatascience.com/
+https://github.com/
+https://stackoverflow.com/
+https://www.rdocumentation.org/
+https://www.r-bloggers.com/how-to-implement-random-forests-in-r/
